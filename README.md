@@ -72,3 +72,18 @@ Run the generated `star-play.exe` from the build output directory.
 - Scores reset when the application closes.
 - No network/server, Telegram bot, Telegram Mini App, payments, or real prize delivery.
 - The GitHub Actions workflow attempts a Linux configure/build check on pushes and pull requests to `main`.
+
+
+## STAR TRADE web demo
+
+A responsive browser-based **paper-trading simulator** is available at `web/index.html`.
+
+Features:
+- Neon/glass dashboard with a simulated price chart.
+- Fictional demo assets (BTC-D, ETH-D, SOL-D, TON-D); prices are randomly generated locally and do not reflect real markets.
+- Virtual balance, buy/sell orders, a 0.1% simulated fee, holdings, and trade history.
+- No real-money deposits, exchange connection, withdrawals, or real financial orders.
+
+### Preview / deploy the web demo
+
+Open `web/index.html` in a browser, or use Render's Blueprint flow with `render.yaml` to create the static site. This is a frontend prototype; balances and trades are stored only in the current page session and reset when reloaded. It is not a production trading system or investment advice.
