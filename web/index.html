@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090d18">
+<title>STAR TRADE — Demo Terminal</title>
+<style>
+:root{color-scheme:dark;--bg:#080c16;--panel:#111827;--panel2:#151f30;--line:#26334a;--muted:#8d9bb2;--text:#eef4ff;--green:#38e3a2;--red:#ff6584;--blue:#6d8cff;--purple:#a879ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 20% -20%,#1c2850 0,transparent 45%),var(--bg);color:var(--text);font:14px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}
+button,input{font:inherit}button{cursor:pointer;border:0;color:inherit;transition:transform .15s,filter .15s}button:active{transform:scale(.98)}.app{max-width:1480px;margin:auto;padding:18px}.top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}.brand{display:flex;align-items:center;gap:12px}.logo{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#7d6cff,#35d9ca);font-size:21px;font-weight:900;box-shadow:0 8px 32px #6d8cff40}.brand h1{font-size:18px;letter-spacing:1.6px;margin:0}.sub{font-size:11px;color:var(--muted);letter-spacing:1.4px}.demo{background:#273323;color:#9ff6ca;border:1px solid #37634e;padding:7px 11px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.8px}.grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(290px,.8fr);gap:16px}.left,.right{display:grid;gap:16px;align-content:start}.card{background:linear-gradient(145deg,#141d2c,#0e1522);border:1px solid var(--line);border-radius:19px;padding:18px;box-shadow:0 14px 40px #0002;min-width:0}.assets{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.asset{background:#0c1320;border:1px solid #263148;padding:12px;border-radius:14px;text-align:left;min-width:0}.asset.active{border-color:#8a7bff;box-shadow:0 0 0 1px #8a7bff33 inset;background:#1a1d35}.coin{display:flex;align-items:center;gap:8px;font-weight:800;font-size:12px}.coin-icon{width:29px;height:29px;border-radius:10px;display:grid;place-items:center;background:#243252;font-size:14px}.price{font-size:17px;font-weight:800;margin-top:13px;white-space:nowrap}.change{font-size:11px;margin-top:3px}.up{color:var(--green)}.down{color:var(--red)}.charthead{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.charthead h2{font-size:19px;margin:0 0 4px}.muted{color:var(--muted)}.bigprice{font-size:25px;font-weight:850;letter-spacing:-.6px}.periods{display:flex;gap:4px;background:#0b1220;padding:4px;border-radius:10px}.periods button{background:transparent;color:var(--muted);padding:6px 9px;border-radius:7px;font-size:11px}.periods button.active{background:#283252;color:#fff}.chartwrap{height:300px;position:relative;margin-top:12px}.chartwrap canvas{width:100%;height:100%;display:block}.chartlegend{display:flex;gap:16px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin-top:10px}.dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;background:var(--green)}.section-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}.section-title h3{font-size:14px;margin:0}.section-title span{font-size:11px;color:var(--muted)}.trade-tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:#0b1220;border-radius:12px;padding:5px;margin-bottom:15px}.trade-tabs button{padding:10px;border-radius:9px;background:transparent;color:var(--muted);font-weight:800}.trade-tabs button.buy.active{background:#173b35;color:var(--green)}.trade-tabs button.sell.active{background:#411d2a;color:var(--red)}.fieldlabel{display:flex;justify-content:space-between;color:var(--muted);font-size:11px;margin:13px 0 7px}.inputbox{display:flex;align-items:center;gap:8px;background:#0a111e;border:1px solid #29364d;border-radius:11px;padding:11px}.inputbox input{width:100%;min-width:0;background:transparent;border:0;outline:0;color:white;font-size:15px;font-weight:750}.inputbox b{font-size:11px;color:#aebbd0}.quick{display:flex;gap:6px;margin-top:8px}.quick button{flex:1;background:#202b40;border-radius:8px;padding:7px 4px;font-size:11px;color:#bdc9dc}.summary{display:grid;gap:8px;padding:13px;background:#0b1220;border-radius:12px;margin:15px 0}.sumrow{display:flex;justify-content:space-between;gap:12px;font-size:12px}.sumrow span:first-child{color:var(--muted)}.trade-btn{width:100%;padding:14px;border-radius:12px;background:linear-gradient(100deg,#6e7cff,#8c6cff);font-weight:900;font-size:14px;box-shadow:0 8px 24px #6e7cff30}.trade-btn.sell{background:linear-gradient(100deg,#ff597d,#db4775)}.smallnote{font-size:10px;color:var(--muted);margin-top:10px;text-align:center}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.metric{background:#0b1220;border-radius:13px;padding:13px;min-width:0}.metric .label{font-size:10px;color:var(--muted)}.metric .value{font-size:19px;font-weight:850;margin-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;white-space:nowrap;font-size:12px}th{text-align:left;color:var(--muted);font-weight:600;font-size:10px;padding:10px 8px;border-bottom:1px solid var(--line)}td{padding:12px 8px;border-bottom:1px solid #202b3c}tbody tr:last-child td{border-bottom:0}.empty{text-align:center;padding:25px 10px;color:var(--muted)}.tag{padding:4px 7px;border-radius:7px;background:#18372f;color:var(--green);font-size:10px;font-weight:800}.tag.loss{background:#3a202b;color:var(--red)}.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#172437;border:1px solid #3c506e;border-radius:12px;padding:12px 17px;box-shadow:0 12px 45px #0008;transition:.25s;z-index:5;max-width:90vw}.toast.show{opacity:1;transform:translate(-50%,0)}.reset{background:transparent;color:var(--muted);font-size:11px;text-decoration:underline}.foot{margin:18px 2px 5px;text-align:center;color:#75839a;font-size:10px}
+@media(max-width:950px){.grid{grid-template-columns:1fr}.right{grid-template-columns:1fr 1fr;align-items:start}.right .portfolio{grid-column:1/-1}.chartwrap{height:280px}}
+@media(max-width:600px){.app{padding:11px}.top{align-items:flex-start}.brand h1{font-size:16px}.card{padding:13px;border-radius:15px}.assets{grid-template-columns:repeat(2,minmax(0,1fr))}.right{grid-template-columns:1fr}.right .portfolio{grid-column:auto}.metrics{grid-template-columns:1fr 1fr}.metrics .metric:last-child{grid-column:1/-1}.chartwrap{height:230px}.bigprice{font-size:22px}.periods button{padding:6px}.sub{font-size:9px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top"><div class="brand"><div class="logo">S</div><div><h1>STAR TRADE</h1><div class="sub">PAPER TRADING TERMINAL</div></div></div><div class="demo">● DEMO MODE · NO REAL MONEY</div></header>
+<div class="grid">
+<main class="left">
+<section class="card"><div class="section-title"><h3>Рынок</h3><span>Учебные синтетические активы</span></div><div class="assets" id="assets"></div></section>
+<section class="card">
+<div class="charthead"><div><div class="muted" id="chart-name" style="font-size:12px;margin-bottom:5px">Bitcoin Demo · BTC-D</div><div class="bigprice" id="chart-price">$64,250.00</div><div class="change up" id="chart-change">+2.42% сегодня</div></div><div class="periods"><button class="active" data-p="1">1H</button><button data-p="2">4H</button><button data-p="3">1D</button><button data-p="4">1W</button></div></div>
+<div class="chartwrap"><canvas id="chart" aria-label="Демо-график цены"></canvas></div><div class="chartlegend"><span><i class="dot"></i>Смоделированная цена</span><span>График не отражает реальный рынок</span></div>
+</section>
+<section class="card"><div class="section-title"><h3>История операций</h3><button class="reset" id="reset">Сбросить демо-счёт</button></div><div class="tablewrap"><table><thead><tr><th>АКТИВ</th><th>ДЕЙСТВИЕ</th><th>КОЛ-ВО</th><th>ЦЕНА</th><th>ВРЕМЯ</th></tr></thead><tbody id="history"><tr><td colspan="5" class="empty">Сделок пока нет — попробуй демо-ордер</td></tr></tbody></table></div></section>
+</main>
+<aside class="right">
+<section class="card"><div class="section-title"><h3>Портфель</h3><span class="tag">SIMULATED</span></div><div class="metrics"><div class="metric"><div class="label">Демо-баланс</div><div class="value" id="cash">$10,000</div></div><div class="metric"><div class="label">Стоимость активов</div><div class="value" id="holdings">$0.00</div></div><div class="metric"><div class="label">Общий результат</div><div class="value up" id="pnl">+$0.00</div></div></div></section>
+<section class="card"><div class="section-title"><h3>Новый ордер</h3><span>Рынок · демо</span></div><div class="trade-tabs"><button class="buy active" id="buy-tab">Купить</button><button class="sell" id="sell-tab">Продать</button></div><div class="fieldlabel"><span>Выбранный актив</span><b id="order-asset">BTC-D</b></div><div class="inputbox"><input id="amount" type="number" min="0.0001" step="any" value="0.01" inputmode="decimal"><b id="unit">BTC-D</b></div><div class="quick"><button data-amount="0.25">25%</button><button data-amount="0.5">50%</button><button data-amount="0.75">75%</button><button data-amount="1">100%</button></div><div class="summary"><div class="sumrow"><span>Цена за единицу</span><b id="unit-price">$64,250.00</b></div><div class="sumrow"><span>Объём ордера</span><b id="order-total">$642.50</b></div><div class="sumrow"><span>Комиссия (демо 0.1%)</span><b id="fee">$0.64</b></div><div class="sumrow"><span>Доступно</span><b id="available">$10,000.00</b></div></div><button class="trade-btn" id="execute">Купить BTC-D</button><div class="smallnote">Только виртуальные средства. Нет подключения к бирже.</div></section>
+<section class="card portfolio"><div class="section-title"><h3>Мои активы</h3><span id="holding-count">0 активов</span></div><div id="positions" class="tablewrap"><div class="empty">Пока нет открытых позиций</div></div></section>
+</aside>
+</div>
+<div class="foot">STAR TRADE DEMO · Все котировки и сделки симулированы · Не является инвестиционным советом</div>
+</div><div class="toast" id="toast"></div>
+<script>
+(()=>{
+const seed=[
+{id:"BTC-D",name:"Bitcoin Demo",symbol:"BTC-D",icon:"₿",color:"#f5a94c",price:64250,vol:.0028},
+{id:"ETH-D",name:"Ethereum Demo",symbol:"ETH-D",icon:"◆",color:"#9b9cff",price:3240,vol:.0036},
+{id:"SOL-D",name:"Solana Demo",symbol:"SOL-D",icon:"◎",color:"#7de3b5",price:148.6,vol:.0052},
+{id:"TON-D",name:"Toncoin Demo",symbol:"TON-D",icon:"◈",color:"#63baff",price:5.72,vol:.0041}
+];
+let assets=seed.map(a=>({...a,price:a.price,start:a.price,history:Array.from({length:70},(_,i)=>a.price*(1+(Math.random()-.5)*.025+i*.0001)),change:0}));
+let selected="BTC-D",side="buy",cash=10000,initial=10000,positions={},trades=[],period=1;
+const $=id=>document.getElementById(id), money=n=>"$"+Number(n).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2}), qty=n=>Number(n).toLocaleString("en-US",{maximumFractionDigits:6});
+function current(){return assets.find(a=>a.id===selected)}
+function totalHoldings(){return Object.entries(positions).reduce((s,[id,q])=>s+q*assets.find(a=>a.id===id).price,0)}
+function totalEquity(){return cash+totalHoldings()}
+function renderAssets(){
+$("assets").innerHTML=assets.map(a=>'<button class="asset '+(a.id===selected?'active':'')+'" data-id="'+a.id+'"><div class="coin"><span class="coin-icon" style="color:'+a.color+'">'+a.icon+'</span><span>'+a.symbol+'</span></div><div class="price">'+money(a.price)+'</div><div class="change '+(a.change>=0?'up':'down')+'">'+(a.change>=0?'+':'')+a.change.toFixed(2)+'%</div></button>').join('');
+document.querySelectorAll(".asset").forEach(b=>b.onclick=()=>{selected=b.dataset.id;renderAll()});
+}
+function renderChart(){
+const a=current(),canvas=$("chart"),ctx=canvas.getContext("2d"),rect=canvas.getBoundingClientRect(),dpr=window.devicePixelRatio||1;
+canvas.width=Math.max(1,rect.width*dpr);canvas.height=Math.max(1,rect.height*dpr);ctx.scale(dpr,dpr);
+const w=rect.width,h=rect.height,vals=a.history.slice(-({1:35,2:48,3:60,4:70}[period])),min=Math.min(...vals)*.997,max=Math.max(...vals)*1.003,range=max-min||1;
+ctx.clearRect(0,0,w,h);
+ctx.strokeStyle="#243149";ctx.lineWidth=1;
+for(let i=0;i<5;i++){let y=10+(h-30)*i/4;ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke();ctx.fillStyle="#75839a";ctx.font="10px system-ui";ctx.fillText((max-(range*i/4)).toFixed(a.price<10?3:2),w-63,y-4)}
+let points=vals.map((v,i)=>({x:i*(w-70)/(vals.length-1),y:10+(max-v)/range*(h-30)}));
+const grad=ctx.createLinearGradient(0,0,0,h);grad.addColorStop(0,"#42e5b455");grad.addColorStop(1,"#42e5b400");
+ctx.beginPath();points.forEach((p,i)=>i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y));ctx.lineTo(points[points.length-1].x,h-20);ctx.lineTo(0,h-20);ctx.closePath();ctx.fillStyle=grad;ctx.fill();
+ctx.beginPath();points.forEach((p,i)=>i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y));ctx.strokeStyle="#42e5b4";ctx.lineWidth=2;ctx.stroke();
+const last=points[points.length-1];ctx.beginPath();ctx.arc(last.x,last.y,3.5,0,Math.PI*2);ctx.fillStyle="#42e5b4";ctx.fill();
+$("chart-name").textContent=a.name+" · "+a.symbol;$("chart-price").textContent=money(a.price);$("chart-change").textContent=(a.change>=0?"+":"")+a.change.toFixed(2)+"% за сессию";$("chart-change").className="change "+(a.change>=0?"up":"down");
+}
+function renderOrder(){
+const a=current();$("order-asset").textContent=a.symbol;$("unit").textContent=a.symbol;$("unit-price").textContent=money(a.price);
+const amount=Math.max(0,Number($("amount").value)||0),total=amount*a.price,fee=total*.001;
+$("order-total").textContent=money(total);$("fee").textContent=money(fee);
+$("available").textContent=side==="buy"?money(cash):qty(positions[a.id]||0)+" "+a.symbol;
+$("execute").textContent=(side==="buy"?"Купить ":"Продать ")+a.symbol;$("execute").className="trade-btn"+(side==="sell"?" sell":"");
+$("buy-tab").classList.toggle("active",side==="buy");$("sell-tab").classList.toggle("active",side==="sell");
+}
+function renderPortfolio(){
+const equity=totalEquity(),pnl=equity-initial;
+$("cash").textContent=money(cash);$("holdings").textContent=money(totalHoldings());$("pnl").textContent=(pnl>=0?"+":"")+money(pnl);$("pnl").className="value "+(pnl>=0?"up":"down");
+const held=Object.entries(positions).filter(([,q])=>q>1e-8);$("holding-count").textContent=held.length+" активов";
+$("positions").innerHTML=held.length?'<table><thead><tr><th>АКТИВ</th><th>КОЛ-ВО</th><th>СТОИМОСТЬ</th></tr></thead><tbody>'+held.map(([id,q])=>{const a=assets.find(x=>x.id===id);return '<tr><td><b>'+a.symbol+'</b></td><td>'+qty(q)+'</td><td>'+money(q*a.price)+'</td></tr>'}).join("")+'</tbody></table>':'<div class="empty">Пока нет открытых позиций</div>';
+}
+function renderHistory(){
+$("history").innerHTML=trades.length?trades.slice(0,10).map(t=>'<tr><td><b>'+t.asset+'</b></td><td><span class="tag '+(t.side==="SELL"?"loss":"")+'">'+t.side+'</span></td><td>'+qty(t.amount)+'</td><td>'+money(t.price)+'</td><td>'+t.time+'</td></tr>').join(""):'<tr><td colspan="5" class="empty">Сделок пока нет — попробуй демо-ордер</td></tr>';
+}
+function renderAll(){renderAssets();renderChart();renderOrder();renderPortfolio();renderHistory()}
+function toast(msg){const el=$("toast");el.textContent=msg;el.classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove("show"),2500)}
+$("buy-tab").onclick=()=>{side="buy";renderOrder()};$("sell-tab").onclick=()=>{side="sell";renderOrder()};
+$("amount").addEventListener("input",renderOrder);
+document.querySelectorAll("[data-amount]").forEach(b=>b.onclick=()=>{const a=current(),fraction=Number(b.dataset.amount);$("amount").value=side==="buy"?(cash*fraction/(a.price*1.001)).toFixed(6):((positions[a.id]||0)*fraction).toFixed(6);renderOrder()});
+$("execute").onclick=()=>{
+const a=current(),amount=Number($("amount").value),total=amount*a.price,fee=total*.001;
+if(!Number.isFinite(amount)||amount<=0)return toast("Укажи корректное количество");
+if(side==="buy"){
+if(total+fee>cash+1e-8)return toast("Недостаточно демо-средств");
+cash-=total+fee;positions[a.id]=(positions[a.id]||0)+amount;
+}else{
+if(amount>(positions[a.id]||0)+1e-8)return toast("Недостаточно актива для продажи");
+positions[a.id]-=amount;if(positions[a.id]<1e-8)delete positions[a.id];cash+=total-fee;
+}
+trades.unshift({asset:a.symbol,side:side.toUpperCase(),amount,price:a.price,time:new Date().toLocaleTimeString("ru-RU",{hour:"2-digit",minute:"2-digit",second:"2-digit"})});
+toast((side==="buy"?"Демо-покупка":"Демо-продажа")+" выполнена");renderAll();
+};
+document.querySelectorAll("[data-p]").forEach(b=>b.onclick=()=>{period=Number(b.dataset.p);document.querySelectorAll("[data-p]").forEach(x=>x.classList.toggle("active",x===b));renderChart()});
+$("reset").onclick=()=>{if(!confirm("Сбросить виртуальный баланс и историю?"))return;cash=10000;positions={};trades=[];initial=10000;toast("Демо-счёт сброшен");renderAll()};
+function tick(){assets.forEach(a=>{const prev=a.price;a.price=Math.max(.01,a.price*(1+(Math.random()-.5)*a.vol));a.history.push(a.price);if(a.history.length>100)a.history.shift();a.change=(a.price/a.start-1)*100});renderAll()}
+window.addEventListener("resize",renderChart);renderAll();setInterval(tick,2400);
+})();
+</script>
+</body></html>
